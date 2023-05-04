@@ -30,16 +30,16 @@ def word_cloud(wlist):
     wordDict = {}
     for tup in wlist[:n]:
         wordDict[tup[0]] = tup[1]
-    image_background = PIL.Image.open('./word_cloud/background.png')
+    image_background = PIL.Image.open('./word_cloud/bg1.png')
     MASK = np.array(image_background)
-    wc = WordCloud(font_path='./word_cloud/msyh.ttc',background_color='white', width=4000, height=2000, margin=10, max_words=200, mask =MASK).fit_words(wordDict)
+    wc = WordCloud(font_path='./word_cloud/msyh.ttc',background_color='white', width=4000, height=4000, margin=10, max_words=2000, mask =MASK).fit_words(wordDict)
     plt.imshow(wc)
     plt.show()
     wc.to_file('./word_cloud/cloud.png')
 
 
 if __name__ == '__main__':
-    n = 25
+    n = 500
 
     # 分词
     wordList = cut_word('.\data\dict.txt', r'.\data\test_data.txt')
